@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+  crossorigin="anonymous">
+
+
 <head>
   <meta charset="UTF-8">
-  <title>Rock Paper Scissors Part 7</title>
+  <title>Psychic Word Game</title>
 </head>
 
 <body>
 
-  <div>
-    <h1>The Psychic Game</h1>
-    <p id="directions-text">Guess what letter I'm thinking of</p>
-    <p id="wins-text">wins: 0 </p>
-    <p id="losses-text">Losses: 0 </p>
-    <p id="guesses-left-text"> Guesses Left: 15 </p>
-    <p id="userguess-text">Your Guesses So Far: </p>
+  <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <span class="badge badge-primary">
+          <h1>The Psychic Game</h1>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p id="directions-text">
+          <h4>Guess what letter I'm thinking of</h4>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p id="wins-text">Wins: 0 </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p id="losses-text">Losses: 0 </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p id="guesses-left-text"> Guesses Left: 15 </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p id="userguess-text">Your Guesses So Far: </p>
+      </div>
+    </div>
 
   </div>
 
@@ -23,6 +61,9 @@
     // Creates an array that lists out all of the options (A - Z).
 
     var cpuChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+    var guess = [];
+
 
     // Creating variables to hold the number of wins, losses, and Guesses Left.
     var wins = 0;
@@ -53,30 +94,39 @@
       // This logic determines the outcome of the game (win/loss), and increments the appropriate number
       if (userGuess === computerGuess) {
         wins++;
+        guess.length = 0;
       } else {
-        losses++;
         guessesLeft--;
       }
-
-
-      console.log(computerGuess);
-
-      // Display the user and computer guesses, and wins/losses/your guess/guesses left
-      userGuess.textContent = "You chose: " + userGuess;
-      cpuChoice.textContent = "The computer chose: " + computerGuess;
-      winsText.textContent = "wins: " + wins;
-      lossesText.textContent = "losses: " + losses;
-      guessesLeftText.textContent = "guesses Left: " + guessesLeft;
-      userGuessText.textContent = "Your Guesses So Far: " + userGuess;
-    };
-
-      for (var i = 0; i < guessesLeft.length; i--) {
-       
+      if (guessesLeft === 0) {
+        guess.length = 0;
+        guessesLeft = 15;
+        losses++;
       }
 
+      console.log(computerGuess); //<-------get rid of this eventually
+
+      // Display the user and computer guesses, and wins/losses/your guess/guesses left
+      winsText.textContent = "Wins: " + wins;
+      lossesText.textContent = "Losses: " + losses;
+      guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
+      userGuessText.textContent = "Your Guesses So Far: " + guess;
+
+
+      // It then takes the user's response and "pushes" (or adds) the variable to the end of the guess array.
+      guess.push(userGuess);
+
+    };
 
   </script>
 
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
