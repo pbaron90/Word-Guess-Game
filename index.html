@@ -16,7 +16,7 @@
 
     <div class="row">
       <div class="col">
-        <span class="badge badge-primary">
+        <span class="  badge badge-pill badge-primary  ">
           <h1>The Psychic Game</h1>
         </span>
       </div>
@@ -32,27 +32,51 @@
 
     <div class="row">
       <div class="col-md-12">
-        <p id="wins-text">Wins: 0 </p>
+        <span class="badge badge badge-success">---Wins---
+          <p id="wins-text">0</p>
+        </span>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <p id="losses-text">Losses: 0 </p>
-      </div>
-    </div>
+    <br>
 
     <div class="row">
       <div class="col-md-12">
-        <p id="guesses-left-text"> Guesses Left: 15 </p>
+        <span class="badge badge-danger">---Losses---
+          <p id="losses-text">0</p>
+        </span>
       </div>
     </div>
 
+    <hr><hr><hr>
+
+    <br>
+
     <div class="row">
-      <div class="col-md-12">
-        <p id="userguess-text">Your Guesses So Far: </p>
+      <div class="col-lg-4">
+        <span class="badge badge-warning">-----Guesses left-----
+          <p id="guesses-left-text">0</p>
+        </span>
       </div>
+  
+
+    <br>
+
+    <div class="col-lg-4">
+      <span class="badge badge badge-info">-----Your Guess-----
+        <p id="userguess-text">___</p>
+      </span>
     </div>
+
+
+  <br>
+
+  <div class="col-lg-4">
+    <span class="badge badge badge-dark">-----The Right Guess-----
+      <p id="computerchoice-text">___</p>
+    </span>
+  </div>
+ 
 
   </div>
 
@@ -77,8 +101,6 @@
     var guessesLeftText = document.getElementById("guesses-left-text")
     var userGuessText = document.getElementById("userguess-text");
     var computerChoiceText = document.getElementById("computerchoice-text");
-
-
 
 
     // This function is run whenever the user presses a key.
@@ -107,15 +129,11 @@
       console.log(computerGuess); //<-------get rid of this eventually
 
       // Display the user and computer guesses, and wins/losses/your guess/guesses left
-      winsText.textContent = "Wins: " + wins;
-      lossesText.textContent = "Losses: " + losses;
-      guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
-      userGuessText.textContent = "Your Guesses So Far: " + guess;
-
-
-      // It then takes the user's response and "pushes" (or adds) the variable to the end of the guess array.
-      guess.push(userGuess);
-
+      winsText.textContent = wins;
+      lossesText.textContent = losses;
+      guessesLeftText.textContent = guessesLeft;
+      userGuessText.textContent = userGuess;
+      computerChoiceText.textContent = computerGuess;
     };
 
   </script>
